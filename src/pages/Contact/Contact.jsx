@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Send, Phone, MapPin, Mail } from "lucide-react";
+import { Send, Phone, MapPin, Mail, Linkedin, Github, FileText, Code2 } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -51,16 +51,14 @@ export default function Contact() {
       return;
     }
 
-    // Create a new FormData object to send to Web3Forms API
     const form = new FormData();
-    form.append("access_key", "90f4b8af-e590-42b0-beaf-10b18f66a703"); // Replace with your Web3Forms access key
+    form.append("access_key", "90f4b8af-e590-42b0-beaf-10b18f66a703");
     form.append("name", formData.name);
     form.append("email", formData.email);
-    form.append("subject", formData.subject || "New Contact Form Submission");
+    form.append("subject", formData.subject || "New Contact Message for Rishikesh");
     form.append("message", formData.message);
 
     try {
-      // Send form data to Web3Forms API
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: form,
@@ -69,7 +67,7 @@ export default function Contact() {
       const result = await response.json();
 
       if (response.ok) {
-        setStatus("Message sent successfully!");
+        setStatus("Message sent successfully! I will reply soon.");
         setFormData({
           name: "",
           email: "",
@@ -86,130 +84,196 @@ export default function Contact() {
     }
   };
 
+  const socialLinks = [
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/in/rishikesh-c-rpc/",
+      icon: Linkedin,
+      color: "hover:text-blue-400",
+    },
+    {
+      name: "GitHub",
+      href: "https://github.com/githubrishi321",
+      icon: Github,
+      color: "hover:text-white",
+    },
+    {
+      name: "LeetCode",
+      href: "https://leetcode.com/u/rishichavanrpc/",
+      icon: Code2,
+      color: "hover:text-amber-400",
+    },
+    {
+      name: "Resume",
+      href: "https://drive.google.com/file/d/1SVHFOyInUE7phC_f22BO35hlZm6N52oC/view?usp=sharing",
+      icon: FileText,
+      color: "hover:text-cyan-400",
+    },
+  ];
+
   return (
-    <main
-      className="pt-20 lg:pt-[0rem] bg-[#04081A]
- text-white min-h-screen"
-    >
-      <section className="hero min-h-screen flex items-center relative px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto">
+    <main className="pt-24 lg:pt-16 bg-[#04081A] text-white min-h-screen pb-16">
+      <section className="min-h-screen flex items-center relative px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Contact Info */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                  Get in Touch
+                <span className="text-cyan-400 text-sm font-semibold tracking-wider uppercase">06. Contact</span>
+                <h2 className="text-4xl sm:text-5xl font-bold mt-2 mb-4 bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                  Let's Build Something Together
                 </h2>
-                <p className="text-gray-300 text-lg">
-                  Have a question or want to work together? Drop us a message!
+                <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
+                  I'm actively seeking Software Engineer, Full Stack Developer, and GenAI / RAG Engineer roles. Have an opportunity or want to collaborate? Drop me a message!
                 </p>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-5">
                 <div className="flex items-center space-x-4">
-                  <div className="bg-purple-500/10 p-3 rounded-lg">
-                    <Mail className="w-6 h-6 text-purple-400" />
+                  <div className="bg-purple-500/10 border border-purple-500/20 p-3.5 rounded-xl">
+                    <Mail className="w-5 h-5 text-purple-400" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">Email</h3>
-                    <p className="text-gray-400">olovajs@gmail.com</p>
+                    <h3 className="font-semibold text-sm text-gray-300">Email</h3>
+                    <a
+                      href="mailto:rishichavanrpc64@gmail.com"
+                      className="text-white hover:text-cyan-300 text-sm sm:text-base font-medium transition-colors"
+                    >
+                      rishichavanrpc64@gmail.com
+                    </a>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="bg-pink-500/10 p-3 rounded-lg">
-                    <MapPin className="w-6 h-6 text-pink-400" />
+                  <div className="bg-cyan-500/10 border border-cyan-500/20 p-3.5 rounded-xl">
+                    <Phone className="w-5 h-5 text-cyan-400" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">Location</h3>
-                    <p className="text-gray-400">Laxmipure, Natore 6400</p>
+                    <h3 className="font-semibold text-sm text-gray-300">Phone</h3>
+                    <a
+                      href="tel:+918275242744"
+                      className="text-white hover:text-cyan-300 text-sm sm:text-base font-medium transition-colors"
+                    >
+                      +91-8275242744
+                    </a>
                   </div>
+                </div>
+
+                <div className="flex items-center space-x-4">
+                  <div className="bg-pink-500/10 border border-pink-500/20 p-3.5 rounded-xl">
+                    <MapPin className="w-5 h-5 text-pink-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-sm text-gray-300">Location</h3>
+                    <p className="text-gray-300 text-sm sm:text-base">
+                      Pune, Maharashtra, India
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Social profile quick links */}
+              <div className="pt-4 border-t border-gray-800">
+                <h4 className="text-xs uppercase tracking-wider text-gray-400 mb-3 font-semibold">
+                  Connect & Socials
+                </h4>
+                <div className="flex flex-wrap gap-3">
+                  {socialLinks.map((item, idx) => {
+                    const Icon = item.icon;
+                    return (
+                      <a
+                        key={idx}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`px-4 py-2 rounded-xl bg-gray-900 border border-gray-800 text-gray-300 flex items-center gap-2 text-xs font-medium transition-all hover:scale-105 hover:border-cyan-500/40 ${item.color}`}
+                      >
+                        <Icon className="w-4 h-4" />
+                        <span>{item.name}</span>
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             </div>
 
             {/* Contact Form */}
-            <div className="backdrop-blur-lg bg-white/5 p-8 rounded-2xl shadow-xl">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 gap-6">
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="Your Name"
-                      className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${
-                        errors.name ? "border-red-500" : "border-gray-700"
-                      } focus:border-blue-500 focus:outline-none transition-colors`}
-                      value={formData.name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
-                      }
-                    />
-                    {errors.name && (
-                      <p className="text-red-500 text-sm mt-1">{errors.name}</p>
-                    )}
-                  </div>
+            <div className="backdrop-blur-lg bg-gray-900/60 p-8 rounded-2xl shadow-2xl border border-gray-800/80">
+              <h3 className="text-xl font-bold text-white mb-6">Send a Message</h3>
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    className={`w-full px-4 py-3 rounded-xl bg-white/5 border ${
+                      errors.name ? "border-red-500" : "border-gray-700"
+                    } focus:border-cyan-500 focus:outline-none transition-colors text-white placeholder-gray-500`}
+                    value={formData.name}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
+                  />
+                  {errors.name && (
+                    <p className="text-red-400 text-xs mt-1.5">{errors.name}</p>
+                  )}
+                </div>
 
-                  <div>
-                    <input
-                      type="email"
-                      placeholder="Your Email"
-                      className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${
-                        errors.email ? "border-red-500" : "border-gray-700"
-                      } focus:border-blue-500 focus:outline-none transition-colors`}
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
-                    />
-                    {errors.email && (
-                      <p className="text-red-500 text-sm mt-1">
-                        {errors.email}
-                      </p>
-                    )}
-                  </div>
+                <div>
+                  <input
+                    type="email"
+                    placeholder="Your Email"
+                    className={`w-full px-4 py-3 rounded-xl bg-white/5 border ${
+                      errors.email ? "border-red-500" : "border-gray-700"
+                    } focus:border-cyan-500 focus:outline-none transition-colors text-white placeholder-gray-500`}
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                  />
+                  {errors.email && (
+                    <p className="text-red-400 text-xs mt-1.5">{errors.email}</p>
+                  )}
+                </div>
 
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="Subject"
-                      className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${
-                        errors.subject ? "border-red-500" : "border-gray-700"
-                      } focus:border-blue-500 focus:outline-none transition-colors`}
-                      value={formData.subject}
-                      onChange={(e) =>
-                        setFormData({ ...formData, subject: e.target.value })
-                      }
-                    />
-                    {errors.subject && (
-                      <p className="text-red-500 text-sm mt-1">
-                        {errors.subject}
-                      </p>
-                    )}
-                  </div>
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Subject"
+                    className={`w-full px-4 py-3 rounded-xl bg-white/5 border ${
+                      errors.subject ? "border-red-500" : "border-gray-700"
+                    } focus:border-cyan-500 focus:outline-none transition-colors text-white placeholder-gray-500`}
+                    value={formData.subject}
+                    onChange={(e) =>
+                      setFormData({ ...formData, subject: e.target.value })
+                    }
+                  />
+                  {errors.subject && (
+                    <p className="text-red-400 text-xs mt-1.5">{errors.subject}</p>
+                  )}
+                </div>
 
-                  <div>
-                    <textarea
-                      placeholder="Your Message"
-                      rows="4"
-                      className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${
-                        errors.message ? "border-red-500" : "border-gray-700"
-                      } focus:border-blue-500 focus:outline-none transition-colors resize-none`}
-                      value={formData.message}
-                      onChange={(e) =>
-                        setFormData({ ...formData, message: e.target.value })
-                      }
-                    ></textarea>
-                    {errors.message && (
-                      <p className="text-red-500 text-sm mt-1">
-                        {errors.message}
-                      </p>
-                    )}
-                  </div>
+                <div>
+                  <textarea
+                    placeholder="Your Message"
+                    rows="4"
+                    className={`w-full px-4 py-3 rounded-xl bg-white/5 border ${
+                      errors.message ? "border-red-500" : "border-gray-700"
+                    } focus:border-cyan-500 focus:outline-none transition-colors resize-none text-white placeholder-gray-500`}
+                    value={formData.message}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
+                  ></textarea>
+                  {errors.message && (
+                    <p className="text-red-400 text-xs mt-1.5">
+                      {errors.message}
+                    </p>
+                  )}
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 px-6 rounded-lg font-semibold flex items-center justify-center space-x-2 hover:opacity-90 transition-opacity"
+                  className="w-full bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-600 text-white py-3.5 px-6 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:opacity-95 transition-opacity shadow-lg shadow-cyan-500/20 cursor-pointer"
                 >
                   <span>Send Message</span>
                   <Send className="w-4 h-4" />
@@ -219,9 +283,9 @@ export default function Contact() {
               {/* Status Message */}
               {status && (
                 <div
-                  className={`mt-4 text-center ${
-                    status.includes("success")
-                      ? "text-green-400"
+                  className={`mt-4 text-center text-sm ${
+                    status.includes("successfully")
+                      ? "text-emerald-400"
                       : "text-red-400"
                   }`}
                 >

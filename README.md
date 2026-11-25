@@ -1,193 +1,49 @@
-# Portfolio Website
+# Rishikesh Chavan — Developer Portfolio
+
 <div align="center">
-  <pre>
-    _____           _    __      _ _       
-   |  __ \         | |  / _|    | (_)      
-   | |__) |__  _ __| |_| |_ ___ | |_  ___  
-   |  ___/ _ \| '__| __|  _/ _ \| | |/ _ \ 
-   | |  | (_) | |  | |_| || (_) | | | (_) |
-   |_|   \___/|_|   \__|_| \___/|_|_|\___/ 
-  </pre>
+  <h2>Rishikesh Chavan</h2>
+  <p><strong>Computer Engineering Graduate • Full Stack Developer • GenAI / RAG Engineer</strong></p>
+  <p>
+    <a href="https://github.com/githubrishi321">GitHub</a> •
+    <a href="https://www.linkedin.com/in/rishikesh-c-rpc/">LinkedIn</a> •
+    <a href="https://leetcode.com/u/rishichavanrpc/">LeetCode</a> •
+    <a href="mailto:rishichavanrpc64@gmail.com">Email</a> •
+    <a href="https://drive.google.com/file/d/1SVHFOyInUE7phC_f22BO35hlZm6N52oC/view?usp=sharing">Resume</a>
+  </p>
 </div>
 
- 
-Welcome to my **portfolio website**! This site showcases my skills, experience, education, projects, and how to get in touch with me. It's built with **React** and **Vite** for a fast, modern web experience. You can explore my work, learn about my journey, and contact me directly.
-
 ---
 
-## Demo
+Welcome to my **personal portfolio website**! This site showcases my full-stack and GenAI projects, technical skill set, internships at StellarMind.ai and Octanet Services, educational journey at Sinhgad Institute of Technology (SPPU), verified cloud certifications (AWS & Oracle AI), and contact information.
 
-![Portfolio Demo](https://i.postimg.cc/Dfr5jCQp/Screenshot-2025-01-02-120901.png)
-
----
-
-## Live Preview
-
-Check out the live preview of the portfolio website here:  
-[**Live Demo**](https://codervai.vercel.app/)
----
-### 🎯 Project Structure
-```bash
-portfolio/
-├── node_modules/
-├── public/
-├── src/
-│   ├── assets/
-│   │   ├── css/
-│   │   │   ├── index.css
-│   │   │   └── tomorrow.css
-│   │   └── images/
-│   ├── components/
-│   │   ├── ui/
-│   │   │   ├── Reusable Components/
-│   │   │   │   ├── badge.jsx
-│   │   │   │   ├── button.jsx
-│   │   │   │   ├── card.jsx
-│   │   │   │   ├── EducationLoader.jsx
-│   │   │   │   ├── evervault-card.jsx
-│   │   │   │   ├── flip-words.jsx
-│   │   │   │   ├── icon-cloud.jsx
-│   │   │   │   ├── meteors.jsx
-│   │   │   │   ├── sparkles-text.jsx
-│   │   │   │   └── tooltip.jsx
-│   │   │   │
-│   │   │   ├── Main Components/
-│   │   │   │   ├── AnimatedGrid.jsx
-│   │   │   │   ├── Contact.jsx
-│   │   │   │   ├── Education.jsx
-│   │   │   │   ├── enhanced-portfolio-card.jsx
-│   │   │   │   ├── Experience.jsx
-│   │   │   │   ├── global.jsx
-│   │   │   │   ├── Header.jsx
-│   │   │   │   ├── Hero.jsx
-│   │   │   │   ├── Home.jsx
-│   │   │   │   ├── PortfolioPage.jsx
-│   │   │   │   ├── Projects.jsx
-│   │   │   │   └── Skills.jsx
-│   │   └── lib/
-│   │       └── utils.js
-│   ├── pages/
-│   │   ├── About/
-│   │   │   └── About.jsx
-│   │   ├── Contact/
-│   │   │   └── Contact.jsx
-│   │   ├── Experience/
-│   │   │   └── Experience.jsx
-│   │   ├── Header/
-│   │   │   └── Header.jsx
-│   │   ├── Hero/
-│   │   │   └── Hero.jsx
-│   │   ├── Projects/
-│   │   │   ├── Projects.jsx
-│   │   │   └── testProjects.jsx
-│   │   └── Skills/
-│   │       └── Skills.jsx
-│   ├── App.jsx
-│   └── main.jsx
-├── Configuration Files/
-│   ├── .eslintrc.js
-│   ├── .gitignore
-│   ├── components.json
-│   ├── index.html
-│   ├── jsconfig.json
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── postcss.config.js
-│   ├── README.md
-│   ├── tailwind.config.js
-│   ├── vercel.json
-│   └── vite.config.js
-
-```
----
-
-## Sections of the Portfolio
-
-The portfolio website consists of the following sections:
-
-- **Home**: Introduction and a brief overview.
-- **Skills**: A detailed list of my technical skills.
-- **Experience**: My professional journey and work experience.
-- **Education**: Academic background and certifications.
-- **Projects**: A showcase of the projects I've worked on.
-- **Contact**: Information on how to reach out to me.
-
----
-
-## 💻 Technologies Used
-- **Frontend:** React.js with Vite
-- **Styling:** Tailwind CSS
-- **Animations:** Framer Motion
-- **Icons:** React Icons
+## 💻 Tech Stack
+- **Frontend:** React.js, Tailwind CSS, Lucide Icons, React Icons
+- **Animations:** Framer Motion, Lenis Smooth Scroll, PrismJS
+- **Build Tool:** Vite
 - **Deployment:** Vercel
 
----
+## 🚀 Sections
+- **Home / Hero**: Interactive code card, animated roles, key highlights, and resume download.
+- **About Me**: Professional summary, background story, athletic discipline, and core metrics.
+- **Skills**: Categorized technical skills across Programming Languages, AI / GenAI & Vector Search, Frontend, Backend & APIs, Databases, and IoT / Cloud / DevOps.
+- **Experience**: Detailed work history at StellarMind.ai (MakeMy Grocery IoT/MQTT) and Octanet Services (Microservices & RabbitMQ).
+- **Education & Certifications**: B.E. Computer Engineering (CGPA 8.06/10), HSC (89.83%), AWS & Oracle AI Certifications, and Homi Bhabha & LeetCode achievements.
+- **Featured Projects**: Grocery Knowledge-Base Chatbot (RAG), AI-Powered Blog Application, Full-Stack E-Commerce Website, Smart URL Shortener, and Schedulr (AI Smart Scheduling Platform).
+- **Contact**: Functional contact form powered by Web3Forms, email, phone, and direct profile links.
 
-## Installation ⬇️
-
-You will need to download **Git** and **Node** to run this project.
-
-### Git
-
-- Download and install Git from the official website: [Git Downloads](https://git-scm.com/)
-- Verify the installation:
-  ```bash
-  git --version
-  ```
-
-### Node
-
-- Download and install Node.js from the official website: [Node.js Downloads](https://nodejs.org/)
-- Make sure you have the latest version of both Git and Node on your computer.
-- Verify the installation:
-  ```bash
-  node --version
-  ```
-
-# Getting Started 🎯
-
-### Fork and Clone the Repository 🚀
-1. Click the **Fork** button at the top-right corner of the page to create your own copy of the repository.
-2. After forking, open your terminal and run the following commands to clone the repo:
-
-  ```bash
-  git clone https://github.com/seraprogrammer/portfolio.git
-  ```
-Navigate to the Project Directory 📂
-Once the repository is cloned, change your directory to the project folder:
+## 🛠️ Local Development
 ```bash
+# 1. Clone repository
+git clone https://github.com/githubrishi321/portfolio.git
 cd portfolio
-```
 
-Install Dependencies ⚙️
-From the root directory of your project, install the necessary packages:
-```bash
+# 2. Install dependencies
 npm install
-```
 
-Run the Development Server 🚀
-Start the development server to see your project live:
-```bash
+# 3. Start dev server
 npm run dev
 ```
 
-View the Project 🌐
-Open your browser and visit http://localhost:5173/ to see the result! 🎉
-
-## 📝 License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ---
 
-### 🤝 Contributing
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-<div align="center"> Made with ❤️ by Nazmul Hossain </div>
-
+<div align="center">Made with ❤️ by Rishikesh Chavan</div>

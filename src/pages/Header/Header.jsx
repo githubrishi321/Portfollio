@@ -52,7 +52,9 @@ export default function Header() {
           <nav className="bg-gray-900/90 backdrop-blur-md md:rounded-full px-4 md:px-6 py-2.5">
             {/* Mobile Menu Button */}
             <div className="flex justify-between items-center md:hidden px-2">
-              <Link to="/" className="text-white font-bold">Portfolio</Link>
+              <Link to="/" className="text-white font-bold text-lg tracking-wide">
+                <span className="text-cyan-400">RC</span> · Portfolio
+              </Link>
               <button 
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-white p-2"
