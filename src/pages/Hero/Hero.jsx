@@ -113,30 +113,9 @@ const profile = {
     `;
     document.head.appendChild(style);
 
-    // Apply extra padding for 1366x768 resolution
-    const checkResolution = () => {
-      const isTargetResolution =
-        window.innerWidth >= 1360 &&
-        window.innerWidth <= 1370 &&
-        window.innerHeight >= 760 &&
-        window.innerHeight <= 775;
-
-      if (isTargetResolution) {
-        document.documentElement.style.setProperty(
-          "--hero-padding-top",
-          "12rem"
-        );
-      } else {
-        document.documentElement.style.setProperty("--hero-padding-top", "0");
-      }
-    };
-
-    checkResolution();
-    window.addEventListener("resize", checkResolution);
-
+    // Clean up style on unmount
     return () => {
       document.head.removeChild(style);
-      window.removeEventListener("resize", checkResolution);
     };
   }, [code]);
 
@@ -144,8 +123,7 @@ const profile = {
     <>
       <main className="bg-[#020617] text-white min-h-screen">
         <section
-          className="hero min-h-screen flex items-center justify-center relative px-4 sm:px-6 lg:px-8 py-10 md:py-16 lg:py-0 hero-section-padding"
-          style={{ paddingTop: "var(--hero-padding-top, 0)" }}
+          className="hero min-h-screen flex items-center justify-center relative px-4 sm:px-6 lg:px-8 pt-24 pb-12 sm:pt-28 sm:pb-16 md:py-20 lg:py-0 hero-section-padding"
         >
           <div className="absolute inset-0"></div>
 
@@ -164,16 +142,7 @@ const profile = {
 
           {/* Main content container */}
           <div
-            className="container mx-auto flex flex-col lg:flex-row items-center justify-between relative z-10 py-8 md:py-10 lg:py-12 md:pt-28 xl:pt-28"
-            style={{
-              paddingTop:
-                window.innerWidth >= 1360 &&
-                window.innerWidth <= 1370 &&
-                window.innerHeight >= 760 &&
-                window.innerHeight <= 775
-                  ? "12rem"
-                  : "",
-            }}
+            className="container mx-auto flex flex-col lg:flex-row items-center justify-between relative z-10 pt-4 pb-8 sm:pt-6 md:py-10 lg:py-12 md:pt-28 xl:pt-28"
           >
             {/* Left column - Text content */}
             <div className="w-full lg:w-1/2 mb-12 lg:mb-0 animate__animated animate__fadeInLeft relative">
@@ -182,9 +151,12 @@ const profile = {
               <div className="absolute hidden lg:block lg:top-40 lg:-right-20 w-48 h-48 lg:w-64 lg:h-64 bg-teal-500/10 rounded-full blur-3xl"></div>
 
               {/* Welcome badge */}
-              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-gray-800/50 backdrop-blur-sm border border-emerald-500/30 mb-6 sm:mb-8 animate__animated animate__fadeInDown animate__delay-1s">
-                <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-                <span className="text-emerald-300 text-xs sm:text-sm font-medium">
+              <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full bg-gray-900/80 backdrop-blur-md border border-emerald-500/40 mb-6 sm:mb-8 shadow-lg shadow-emerald-500/10 animate__animated animate__fadeInDown animate__delay-1s">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                </span>
+                <span className="text-emerald-300 text-xs sm:text-sm font-semibold tracking-wide">
                   Open to Opportunities
                 </span>
               </div>

@@ -1,7 +1,8 @@
 import { ReactLenis } from "lenis/react";
 import { useTransform, motion, useScroll } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { ChevronDown } from "lucide-react";
 
 import ragChatbotImg from "@/assets/images/projects/rag-chatbot.jpg";
 import aiBlogImg from "@/assets/images/projects/ai-blog.jpg";
@@ -250,20 +251,21 @@ function Card({
 }) {
   const container = useRef(null);
   const scale = useTransform(progress, range, [1, targetScale]);
+  const [showDetails, setShowDetails] = useState(false);
 
   return (
     <div
       ref={container}
-      className="h-screen flex items-center justify-center sticky top-0 project-container"
+      className="min-h-screen sm:h-screen flex items-center justify-center sticky top-0 project-container py-6 sm:py-0"
     >
       <motion.div
         style={{
           scale,
-          top: `calc(-5vh + ${i * 20}px)`,
+          top: `calc(${typeof window !== 'undefined' && window.innerWidth < 768 ? '0vh' : '-5vh'} + ${i * 15}px)`,
           transform: `scale(var(--project-scale, 1))`,
           marginTop: "var(--project-margin, 0)",
         }}
-        className="relative -top-[16%] h-auto w-[92%] md:w-[88%] lg:w-[82%] xl:w-[75%] origin-top project-card"
+        className="relative top-0 md:-top-[10%] lg:-top-[15%] h-auto w-[95%] sm:w-[90%] md:w-[88%] lg:w-[82%] xl:w-[75%] origin-top project-card"
         whileHover={{
           y: -6,
           transition: { duration: 0.3 },
@@ -271,8 +273,8 @@ function Card({
       >
         {/* Modern split card design */}
         <div className="w-full flex flex-col md:flex-row bg-gray-900/95 border border-gray-800/80 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-xl">
-          {/* Image section */}
-          <div className="w-full md:w-[42%] h-[240px] md:h-auto min-h-[320px] relative overflow-hidden">
+          {/* Image section: compact banner on mobile, side column on desktop */}
+          <div className="w-full md:w-[40%] h-[160px] sm:h-[200px] md:h-auto md:min-h-[300px] relative overflow-hidden shrink-0">
             <motion.img
               src={url}
               alt={title}
@@ -292,40 +294,54 @@ function Card({
             />
 
             {/* Project number badge */}
-            <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-semibold border border-white/10">
+            <div className="absolute top-3 left-3 md:top-4 md:left-4 bg-black/70 backdrop-blur-md text-white px-2.5 py-0.5 md:px-3 md:py-1 rounded-full text-[10px] md:text-xs font-semibold border border-white/10">
               Featured Project {i + 1}
             </div>
           </div>
 
           {/* Content section */}
-          <div className="w-full md:w-[58%] p-6 md:p-8 flex flex-col justify-between max-h-[85vh] overflow-y-auto">
+          <div className="w-full md:w-[60%] p-4 sm:p-6 md:p-8 flex flex-col justify-between max-h-[72vh] sm:max-h-[78vh] md:max-h-[85vh] overflow-y-auto">
             <div>
-              <div className="flex items-center gap-3 mb-2">
+              <div className="flex items-center gap-2 sm:gap-3 mb-1.5 md:mb-2">
                 <div
-                  className="w-2.5 h-2.5 rounded-full"
+                  className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full shrink-0"
                   style={{ backgroundColor: color }}
                 />
-                <div className="h-[1px] w-12 bg-gray-700" />
-                <span className="text-xs font-mono uppercase tracking-wider text-gray-400">
+                <div className="h-[1px] w-6 sm:w-10 bg-gray-700" />
+                <span className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-gray-400 truncate">
                   {stack}
                 </span>
               </div>
 
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-2 leading-snug">
+              <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white mb-1.5 md:mb-2 leading-snug">
                 {title}
               </h3>
 
-              {/* Comprehensive Description */}
-              <p className="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
+              {/* Description: concise on mobile, full on desktop */}
+              <p className="text-xs sm:text-sm text-gray-300 leading-relaxed mb-2.5 md:mb-3 line-clamp-2 sm:line-clamp-3 md:line-clamp-none">
                 {description}
               </p>
 
+              {/* Mobile toggle button for technical details */}
+              <button
+                type="button"
+                onClick={() => setShowDetails(!showDetails)}
+                className="md:hidden text-xs text-cyan-400 font-medium inline-flex items-center gap-1 mb-2 hover:underline cursor-pointer"
+              >
+                <span>{showDetails ? "Hide technical details" : "View technical details"}</span>
+                <ChevronDown
+                  className={`w-3.5 h-3.5 transform transition-transform duration-200 ${
+                    showDetails ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
               {/* Technical Highlights / Bullets */}
-              <div className="space-y-2 mb-4">
+              <div className={`${showDetails ? "block" : "hidden"} md:block space-y-1.5 md:space-y-2 mb-3 md:mb-4`}>
                 <h4 className="text-[11px] font-semibold uppercase tracking-wider text-cyan-400">
-                  Technical Implementation & Architecture:
+                  Technical Implementation:
                 </h4>
-                <ul className="space-y-2 text-xs sm:text-sm text-gray-300 leading-relaxed">
+                <ul className="space-y-1.5 md:space-y-2 text-xs sm:text-sm text-gray-300 leading-relaxed">
                   {bullets.map((bullet, bIdx) => (
                     <li key={bIdx} className="flex items-start gap-2">
                       <span className="text-cyan-400 font-bold shrink-0 mt-0.5">•</span>
@@ -337,34 +353,42 @@ function Card({
 
               {/* Tags */}
               {tags && (
-                <div className="flex flex-wrap gap-1.5 mt-3">
+                <div className="flex flex-wrap gap-1 sm:gap-1.5 mt-2 md:mt-3">
                   {tags.map((tag, tIndex) => (
                     <span
                       key={tIndex}
-                      className="text-[11px] px-2 py-0.5 rounded-md bg-gray-800/80 text-gray-300 border border-gray-700/60"
+                      className={`text-[10px] sm:text-[11px] px-2 py-0.5 rounded-md bg-gray-800/80 text-gray-300 border border-gray-700/60 ${
+                        tIndex >= 3 ? "hidden sm:inline-block" : "inline-block"
+                      }`}
                     >
                       {tag}
                     </span>
                   ))}
+                  {tags.length > 3 && (
+                    <span className="sm:hidden text-[10px] px-1 py-0.5 text-gray-400">
+                      +{tags.length - 3}
+                    </span>
+                  )}
                 </div>
               )}
             </div>
 
-            <div className="mt-5 pt-4 border-t border-gray-800">
-              <div className="flex items-center gap-5">
+            <div className="mt-4 md:mt-5 pt-3 md:pt-4 border-t border-gray-800">
+              <div className="flex items-center gap-4 sm:gap-5">
                 {/* GitHub Link */}
                 <motion.a
                   href={githubLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-2"
+                  className="group flex items-center gap-1.5 sm:gap-2 text-xs font-semibold"
+                  style={{ color }}
                   whileHover={{ y: -2 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
+                    width="18"
+                    height="18"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke={color}
@@ -374,12 +398,7 @@ function Card({
                   >
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                   </svg>
-                  <span
-                    className="text-xs font-semibold"
-                    style={{ color }}
-                  >
-                    Code Repository
-                  </span>
+                  <span>Code</span>
                 </motion.a>
 
                 {/* Live Link */}
@@ -388,14 +407,15 @@ function Card({
                     href={liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-2"
+                    className="group flex items-center gap-1.5 sm:gap-2 text-xs font-semibold"
+                    style={{ color }}
                     whileHover={{ y: -2 }}
                     transition={{ type: "spring", stiffness: 400 }}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke={color}
@@ -407,12 +427,7 @@ function Card({
                       <line x1="2" y1="12" x2="22" y2="12"></line>
                       <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                     </svg>
-                    <span
-                      className="text-xs font-semibold"
-                      style={{ color }}
-                    >
-                      Live Demo
-                    </span>
+                    <span>Live Demo</span>
                   </motion.a>
                 )}
               </div>
